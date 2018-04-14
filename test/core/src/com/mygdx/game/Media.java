@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Media {
     public static Texture hero;
-    public static Animation<TextureRegion> walkAnimation;
+    public static Animation<TextureRegion> upAnimation, downAnimation, rightAnimation, leftAnimation;
     
     //spritesheet data
     private static final int FRAME_COLS = 5;
@@ -33,7 +33,10 @@ public class Media {
         initAnim(rightWalk, tmp);
         initAnim(leftWalk, tmp);
 	
-        walkAnimation = new Animation<TextureRegion>(0.025f, walkFrames);
+        upAnimation = new Animation<TextureRegion>(0.025f, upWalk);
+        downAnimation = new Animation<TextureRegion>(0.025f, downWalk);
+        rightAnimation = new Animation<TextureRegion>(0.025f, rightWalk);
+        leftAnimation = new Animation<TextureRegion>(0.025f, leftWalk);
         
     
     }
