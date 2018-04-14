@@ -28,7 +28,10 @@ public class Media {
         rightWalk = new TextureRegion[4];
         leftWalk = new TextureRegion[4];
         
-        initAnim();
+        initAnim(upWalk, tmp);
+        initAnim(downWalk, tmp);
+        initAnim(rightWalk, tmp);
+        initAnim(leftWalk, tmp);
 	
         walkAnimation = new Animation<TextureRegion>(0.025f, walkFrames);
         
