@@ -15,8 +15,10 @@ public class Entity {
     public Vector3 pos3;
     public Texture texture;
     public Animation<TextureRegion> rightWalk, leftWalk, upWalk, downWalk;
+    Animation<TextureRegion> aDirect;
     public float width;
     public float height;
+    boolean isMoving;
     public ENTITYTYPE type;
     public float speed;
     float stateTime = 0f;
@@ -29,11 +31,21 @@ public class Entity {
         pos3 = new Vector3();
     }
     
-    public void draw(SpriteBatch batch, Animation<TextureRegion> aDir) {
+    public void draw(SpriteBatch batch, Animation<TextureRegion> aDir, boolean moving) {
         stateTime += Gdx.graphics.getDeltaTime();
+        TextureRegion frame;
         
-        TextureRegion frame = aDir.getKeyFrame(stateTime, true);
+        if (moving == true) { 
+            frame = aDir.getKeyFrame(stateTime, true);
+            
+        }
+        else {
+            frame = aDir.getKeyFrames()[1];
+        }
+        
         batch.draw(frame, pos.x, pos.y, width, height);
+        
+        
     }
     
 }

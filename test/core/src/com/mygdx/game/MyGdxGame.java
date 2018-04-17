@@ -102,10 +102,10 @@ public class MyGdxGame extends ApplicationAdapter{
      
                 
                 batch.begin();
-                hero.draw(batch);
+                hero.draw(batch, hero.aDirect, control.keyDown);
                 
                 for (HashMap.Entry<String, Hero> entry : partnerPlayers.entrySet()) {
-                    entry.getValue().draw(batch);
+                    entry.getValue().draw(batch, entry.getValue().aDirect, control.keyDown);
                 }
                 
                 batch.end();

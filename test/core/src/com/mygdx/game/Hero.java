@@ -1,6 +1,8 @@
 
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Enums.ENTITYTYPE;
 
@@ -17,8 +19,15 @@ public class Hero extends Entity{
         this.pos3.x = pos.x;
         this.pos3.y = pos.y;
         texture = Media.hero;
-        walkAnimation = Media.walkAnimation;
+        rightWalk = Media.rightAnimation;
+        leftWalk = Media.leftAnimation;
+        upWalk = Media.upAnimation;
+        downWalk = Media.downAnimation;
+        this.aDirect = downWalk;
+        isMoving = false;
         speed = 1;
+        
+        
         
     }
     
@@ -26,17 +35,22 @@ public class Hero extends Entity{
         dirX = 0;
         dirY = 0;
         
-        if (control.down)
+        if (control.down) {
             dirY = -1;
+            this.aDirect = downWalk;
+        }
         if (control.up) {
             dirY = 1;
-            
+            this.aDirect = upWalk;
         }
-        if (control.left){
+        if (control.left) {
             dirX = -1;
+            this.aDirect = leftWalk;
         }
-        if (control.right)
+        if (control.right) {
             dirX = 1;
+            this.aDirect = rightWalk;
+        }
         
         pos.x += dirX * speed;
         pos.y += dirY * speed;

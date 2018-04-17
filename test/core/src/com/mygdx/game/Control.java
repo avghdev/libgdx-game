@@ -22,6 +22,7 @@ public class Control extends InputAdapter implements InputProcessor {
     public boolean down;
     public boolean left;
     public boolean right;
+    public boolean keyDown = false;
 
     // MOUSE
     public boolean  LMB;
@@ -57,6 +58,8 @@ public class Control extends InputAdapter implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        keyDown = true;
+        
         switch (keycode) {
             case Keys.DOWN:
                 down = true;
@@ -82,12 +85,16 @@ public class Control extends InputAdapter implements InputProcessor {
             case Keys.D:
                 right = true;
                 break;
+            default:
+                keyDown = false;
         }
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
+        keyDown = false;
+        
         switch (keycode) {
             case Keys.DOWN:
                 down = false;
@@ -119,6 +126,8 @@ public class Control extends InputAdapter implements InputProcessor {
             case Keys.BACKSPACE:
                 debug = !debug;
                 break;
+            default:
+                keyDown = true;
         }
         return false;
     }
